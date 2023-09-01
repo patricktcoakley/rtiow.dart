@@ -3,10 +3,10 @@ import 'package:rtiow/material.dart';
 import 'package:rtiow/ray.dart';
 import 'package:rtiow/vector3.dart';
 
-class Lambertion extends Material {
+class Lambertian implements Material {
   final Color albedo;
 
-  Lambertion(this.albedo);
+  Lambertian(this.albedo);
 
   @override
   HitRecord scatter(Ray ray, HitRecord hitRecord, Ray scattered) {

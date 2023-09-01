@@ -6,7 +6,7 @@ import 'package:rtiow/math.dart';
 import 'package:rtiow/ray.dart';
 import 'package:rtiow/vector3.dart';
 
-class Dielectric extends Material {
+class Dielectric implements Material {
   final double ir;
 
   Dielectric(this.ir);

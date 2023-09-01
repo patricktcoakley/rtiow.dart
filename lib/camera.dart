@@ -27,6 +27,7 @@ class Camera {
     var h = tan(theta / 2);
     var viewportHeight = 2.0 * h;
     var viewportWidth = aspectRatio * viewportHeight;
+
     _w = (lookFrom - lookAt).normalized;
     _u = Vector3.cross(vUp, _w).normalized;
     _v = Vector3.cross(_w, _u);

@@ -14,6 +14,7 @@ class Sphere implements Hittable {
   final Material? material;
 
   const Sphere({required this.radius, required this.center, this.material});
+
   const Sphere.of(this.radius, this.center, this.material);
 
   @override
@@ -36,11 +37,10 @@ class Sphere implements Hittable {
       return hitRecord;
     }
 
-    var sqrtd = sqrt(discriminant);
-    var root = (-halfB - sqrtd) / a;
-
+    var sqrtD = sqrt(discriminant);
+    var root = (-halfB - sqrtD) / a;
     if (root.outsideRange(min: tMin, max: tMax)) {
-      root = (-halfB + sqrtd) / a;
+      root = (-halfB + sqrtD) / a;
       if (root.outsideRange(min: tMin, max: tMax)) {
         return hitRecord;
       }

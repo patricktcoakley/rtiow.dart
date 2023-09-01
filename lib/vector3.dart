@@ -4,7 +4,7 @@ import 'package:rtiow/math.dart';
 
 typedef Color = Vector3;
 
-class Vector3 {
+final class Vector3 {
   final double x;
   final double y;
   final double z;
@@ -22,6 +22,7 @@ class Vector3 {
   Vector3 get normalized => this / length;
 
   const Vector3({this.x = 0, this.y = 0, this.z = 0});
+
   const Vector3.of([this.x = 0, this.y = 0, this.z = 0]);
 
   factory Vector3.rgb({double r = 0, double g = 0, double b = 0}) =>

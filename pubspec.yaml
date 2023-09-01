@@ -1,16 +1,13 @@
 name: rtiow
-description: A sample command-line application.
+description: Ray Tracing In One Weekend in Dart.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/patricktcoakley/rtiow.dart
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
-
-# dependencies:
-#   path: ^1.8.0
+  sdk: '>=3.0.0 <4.0.0'
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.21.0
+  lints: ^2.1.1
+  test: ^1.24.6
 dependencies:
-  image: ^4.0.13
+  image: ^4.0.17

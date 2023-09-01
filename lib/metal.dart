@@ -3,7 +3,7 @@ import 'package:rtiow/material.dart';
 import 'package:rtiow/ray.dart';
 import 'package:rtiow/vector3.dart';
 
-class Metal extends Material {
+class Metal implements Material {
   final double fuzz;
   final Color albedo;
 
