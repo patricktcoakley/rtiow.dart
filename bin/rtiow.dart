@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:rtiow/camera.dart';
 import 'package:rtiow/canvas.dart';
 import 'package:rtiow/dielectric.dart';
@@ -69,10 +71,10 @@ Color _rayColor(int x, int y, Canvas canvas, Camera camera, Hittable world) {
   return color;
 }
 
-void main() {
+Future<void> main() async {
   var world = _randomScene();
   var canvas =
-      Canvas(imageWidth: 1200, aspectRatio: 3.0 / 2.0, samplesPerPixel: 100);
+      Canvas(imageWidth: 100, aspectRatio: 3.0 / 2.0, samplesPerPixel: 100);
   var lookFrom = Vector3.of(13.0, 2.0, 3.0);
   var lookAt = Vector3();
   var vUp = Vector3(y: 1.0);
@@ -88,12 +90,18 @@ void main() {
     focusDistance: distToFocus,
   );
 
-  for (int y = canvas.imageHeight - 1; y >= 0; y--) {
-    for (int x = canvas.imageWidth - 1; x >= 0; x--) {
-      var color = _rayColor(x, y, canvas, camera, world);
-      canvas.writeColor(color, x, canvas.imageHeight - y - 1);
+  var coords = Queue<(int, int)>();
+  for (int x = 0; x < canvas.imageWidth; x++) {
+    for (int y = 0; y < canvas.imageHeight; y++) {
+      coords.add((x, y));
     }
   }
 
-  canvas.writeImage();
+  while (coords.isNotEmpty) {
+    var (x, y) = coords.removeFirst();
+    var color = _rayColor(x, y, canvas, camera, world);
+    canvas.writeColor(color, x, y);
+  }
+
+  await canvas.writeImage();
 }

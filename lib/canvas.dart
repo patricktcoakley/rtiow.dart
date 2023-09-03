@@ -25,10 +25,10 @@ class Canvas {
     var ir = (255 * (sqrt(_pixelScale * color.r).clamp(0.0, 0.999))).toInt();
     var ig = (255 * (sqrt(_pixelScale * color.g).clamp(0.0, 0.999))).toInt();
     var ib = (255 * (sqrt(_pixelScale * color.b).clamp(0.0, 0.999))).toInt();
-    _image.setPixelRgb(x, y, ir, ig, ib);
+    _image.setPixelRgb(x, imageHeight - y - 1, ir, ig, ib);
   }
 
-  void writeImage() async {
+  Future writeImage() async {
     final png = img.encodePng(_image);
     await File('out.png').writeAsBytes(png);
   }
